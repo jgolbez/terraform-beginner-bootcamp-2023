@@ -30,4 +30,33 @@ chmod u+x ./bin/install_terraform_cli
 If the workspace is not new it will not run the Init including the script, it only runs when a new workspace is created
 
 
+### Working with ENV Vars
+List all env variables with: 
+```
+env
+```
+Can filter specific env vars with grep eg 'env | grep variable'
+
+### Set/Unset ENV Vars
+```
+export VARIABLE_NAME="variable_value"
+
+unset VARIABLE_NAME
+```
+
+Temporarily set an ENV Var without export command, in terminal or bash script
+
+### Print Vars
+```
+echo $VARIABLE_NAME
+
+```
+
+### Persistent ENV Variables
+
+ENV vars only persist for one terminal. To use ENV Vars in another terminal, add to bash profile file like .bashrc
+
+
+
+
 
