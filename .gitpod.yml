@@ -1,6 +1,6 @@
 tasks:
   - name: terraform
-    init: |
+    before: |
       source ./bin/install_terraform_cli
   - name: aws-cli
     env:
