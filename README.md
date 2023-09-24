@@ -57,6 +57,27 @@ echo $VARIABLE_NAME
 ENV vars only persist for one terminal. To use ENV Vars in another terminal, add to bash profile file like .bashrc
 
 
+### AWS CLI Installation
 
+AWS CLI is installed via bash script ['./bin/install_aws_cli'](./bin/aws_install_cli) for this project
+
+[Getting Started Install (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+[Set AWS CLI ENV Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+
+Check AWS Credentials:
+```
+aws sts get-caller-identity
+```
+
+If successful you will see an output similar to this:
+```json
+{
+    "UserId": "A56HAGHS8773",
+    "Account": "65653939830",
+    "Arn": "arn:aws:iam::65653939830:user/tf-beginner-bootcamp"
+}
+```
 
 
