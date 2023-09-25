@@ -102,5 +102,7 @@ Use **terraform init** once you've added a provider to the Terraform file (usual
 ### Terraform State
 A Terraform state file is created based on the execution of the plan. It should not be committed to a repo as it can contain sensitive data. This **tfstate** file is an accounting of the infrastructure and without it Terraform is not aware of what has been created
 
+### Terraform Destroy
+**terraform destroy** will destroy any resources created and managed by the tfstate file.
 
 
