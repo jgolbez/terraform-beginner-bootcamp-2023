@@ -79,5 +79,28 @@ If successful you will see an output similar to this:
     "Arn": "arn:aws:iam::65653939830:user/tf-beginner-bootcamp"
 }
 ```
+# Terraform Basics
+
+### Terraform Registry
+Terraform sources providers and modules located at [registry.terraform.io](https://registry.terraform.io)
+
+**Providers** interface with APIs to create and modify resources.
+**Modules** are a way to refactor and make Terraform code modular and portable
+
+### Terraform Console
+Use **terraform** to get a list of commands usable in Terraform Console
+
+### Terraform Init
+Use **terraform init** once you've added a provider to the Terraform file (usually **main.tf**)
+
+### Terraform Plan
+**terraform plan** This generates a change set to be executed by Terraform, it outputs a list of changes to be made, resources to be created, modified or destroyed, and this can be saved as a file to be referenced later
+
+### Terraform Apply
+**terraform apply** is used to execute the change set based on the plan, it will create a tfstate file based on the results of the run. By default you must approve changes before it will run, you can use the *--auto-approve* switch with **terraform apply** to automatically approve it.
+
+### Terraform State
+A Terraform state file is created based on the execution of the plan. It should not be committed to a repo as it can contain sensitive data. This **tfstate** file is an accounting of the infrastructure and without it Terraform is not aware of what has been created
+
 
 
