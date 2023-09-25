@@ -105,4 +105,18 @@ A Terraform state file is created based on the execution of the plan. It should 
 ### Terraform Destroy
 **terraform destroy** will destroy any resources created and managed by the tfstate file.
 
+### Terraform Cloud Integration
+Gitpod has an issue with using the TF Cloud integration for Terraform Init, it prompts for an API token and the process to get one is broken using the Gitpod terminal. Must go to TF Cloud workspace and generate the token, then create a file at [Gitpod Terraform](/home/gitpod/.terraform.d/) called **credentials.tfrc.json** 
+
+This file will need to look like this and include the token you generate from TF Cloud website:
+
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "12535367893huhuchubcudsbyugbd9y7v7d3g73d93bnd3h"
+    }
+  }
+}
+
+Additionally, in the Variables section of your workspace you need to add ENV Variables in TF cloud so that TF cloud can run commands with your providers that equire credentials like AWS. Create the same AWS env variables in TF cloud, marking access keys as sensitive. Then we can run the terraform commands from Gitpod and not have credential failure.
 
