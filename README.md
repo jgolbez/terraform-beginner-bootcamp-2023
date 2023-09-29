@@ -1,6 +1,15 @@
 # Terraform Beginner Bootcamp 2023
 
-## Semantic Versioning :mage:
+## Table of Contents
+
+- [Semantic Versioning](#semantic-versioning)
+- [Install Terraform](#install-terraform)
+  - [Terraform CLI Changes](#terraform-cli-changes)
+  - [Refactoring to Bash Scripts](#refactoring-into-bash-scripts)
+  
+
+
+## Semantic Versioning
 This project will use semantic versioning
 
 The format:
@@ -10,10 +19,12 @@ The format:
 - **MINOR** version when you add functionality in a backward compatible manner
 - **PATCH** version when you make backward compatible bug fixes1_semantic_versioning
 
+## Install Terraform
+[Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
+
 ### Terraform CLI Changes
 Terraform CLI install has changed so we needed to fix the Gitpod YML([.gitpod.yml](.gitpod.yml))
-
-[Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
 ### Refactoring into Bash Scripts
 
