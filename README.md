@@ -7,7 +7,6 @@
 
 - [Week 0 Journal](journal/week0.md)
 
-- 
 
 [ToC Generator](https://derlin.github.io/bitdowntoc/)
 
