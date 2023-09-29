@@ -1,21 +1,25 @@
-# Terraform Beginner Bootcamp 2023
+# Terraform Beginner Bootcamp 2023 - Week0
 
-## Table of Contents
-
-- [Semantic Versioning](#semantic-versioning)
-- [Install Terraform](#install-terraform)
-  - [Terraform CLI Changes](#terraform-cli-changes)
-  - [Refactoring to Bash Scripts](#refactoring-into-bash-scripts)
-  - [Linux Distribution](#linux-distribution)
-- [Working With ENV Variables](#working-with-env-vars)
-  - [Set/Unset Vars](#working-with-env-vars)
-  - [Print Vars](#print-vars)
-  - [Persistent Env Variables](##persistent-env-variables)
-- [AWS CLIU Install](#aws-cli-installation)
+   * [Semantic Versioning](#semantic-versioning)
+   * [Install Terraform](#install-terraform)
+      + [Terraform CLI Changes](#terraform-cli-changes)
+      + [Refactoring into Bash Scripts](#refactoring-into-bash-scripts)
+      + [Linux Distribution](#linux-distribution)
+      + [Gitpod Consideration](#gitpod-consideration)
+      + [Working with ENV Vars](#working-with-env-vars)
+      + [Set/Unset ENV Vars](#setunset-env-vars)
+      + [Print Vars](#print-vars)
+      + [Persistent ENV Variables](#persistent-env-variables)
+      + [AWS CLI Installation](#aws-cli-installation)
 - [Terraform Basics](#terraform-basics)
-- [Terrafom Registry](#terraform-registry)
-- [Terraform Cloud Integration](#terraform-cloud-integration)
-  
+      + [Terraform Registry](#terraform-registry)
+      + [Terraform Console](#terraform-console)
+      + [Terraform Init](#terraform-init)
+      + [Terraform Plan](#terraform-plan)
+      + [Terraform Apply](#terraform-apply)
+      + [Terraform State](#terraform-state)
+      + [Terraform Destroy](#terraform-destroy)
+      + [Terraform Cloud Integration](#terraform-cloud-integration)
 
 
 ## Semantic Versioning
