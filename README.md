@@ -13,7 +13,8 @@
   - [Persistent Env Variables](##persistent-env-variables)
 - [AWS CLIU Install](#aws-cli-installation)
 - [Terraform Basics](#terraform-basics)
-- 
+- [Terrafom Registry](#terraform-registry)
+- [Terraform Cloud Integration](#terraform-cloud-integration)
   
 
 
