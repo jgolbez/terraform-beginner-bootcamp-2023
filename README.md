@@ -6,6 +6,14 @@
 - [Install Terraform](#install-terraform)
   - [Terraform CLI Changes](#terraform-cli-changes)
   - [Refactoring to Bash Scripts](#refactoring-into-bash-scripts)
+  - [Linux Distribution](#linux-distribution)
+- [Working With ENV Variables](#working-with-env-vars)
+  - [Set/Unset Vars](#working-with-env-vars)
+  - [Print Vars](#print-vars)
+  - [Persistent Env Variables](##persistent-env-variables)
+- [AWS CLIU Install](#aws-cli-installation)
+- [Terraform Basics](#terraform-basics)
+- 
   
 
 
