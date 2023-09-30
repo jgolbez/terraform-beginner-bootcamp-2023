@@ -90,3 +90,41 @@ module "terrahouse_aws" {
 }
 ```
 
+## Consideration Using ChatGPT
+ChatGPT and LLMs may be out of date and should not be trusted alone, verify the suggested code is not deprecated or replaced
+
+## Working with Files in Terraform
+
+
+### File Exists Function
+Built-in TF function to check for existence of a file:
+```
+variable "error_html_filepath" {
+    description = "File path to error.html"
+    type = string
+
+    validation {
+        condition = fileexists(var.error_html_filepath)
+        error_message = "The provided path for error.html does not exist"
+    }
+}
+```
+### FileMD5 Function
+[FileMD5 checks hash of file data for changes to state](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+
+### Terraform Path References for Files
+[Path References for Variables in TF](https://developer.hashicorp.com/terraform/language/expressions/references)
+
+In TF there are special variables called `path` taht allow reference to local file structures
+- path.module = get the path for the current module
+- path.root = get path for root of project/module
+
+```tf
+resource "aws_s3_object" "index" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public.index.html"
+  etag = filemd5(var.index_html_filepath)  
+}
+```
