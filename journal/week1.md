@@ -52,3 +52,41 @@ If you lose the tfstate file, it may be required to tear down the resources manu
 If someone creates, modifies or deletes via ClickOps, TF will attempt to fix the config drift by resetting the state to what is in the tfstate file.
 We can use `terraform state rm <object>` to remove something that was deleted manually, or terraform import `terraform import <code resource> <created object per docs)`
 
+### Fix Using TF Refresh
+```sh
+terraform apply --auto-approve -refresh-only
+```
+
+
+## Terraform Modules
+[Terraform Module Docs](https://developer.hashicorp.com/terraform/language/modules)
+
+### Terraform Module Structure
+Recommended to place module in `modules` directory
+Include `main.tf` and `variables.tf` and `outputs.tf` at least
+
+### Passing Input Variables
+
+We can pass input variables to module, module must declare TF variables in its own variables.tf file
+```
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.s3_website_bucket_name
+}
+```
+
+### Module Sources
+[Terraform Module Docs](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+Using source we can import module from:
+- local path
+- Github
+- TF Registry
+
+```
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
+
