@@ -141,7 +141,7 @@ variable "error_html_filepath" {
 ### Terraform Path References for Files
 [Path References for Variables in TF](https://developer.hashicorp.com/terraform/language/expressions/references)
 
-In TF there are special variables called `path` taht allow reference to local file structures
+In TF there are special variables called `path` that allow reference to local file structures
 - path.module = get the path for the current module
 - path.root = get path for root of project/module
 
@@ -273,3 +273,39 @@ resource "aws_instance" "web" {
   }
 }
 ```
+## Finding Files Using Fileset in TF
+[Fileset Doc](https://developer.hashicorp.com/terraform/language/functions/file)
+Using file functions in TF allow us to select or filter file lists for use elsewhere.
+
+```tf
+fileset("${path.root}/public/assets", "*")
+
+```
+
+## For Each Terraform Loop
+[for_each TF Loop Doc](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
+
+Allows enumeration over a list:
+
+```tf
+[for s in var.list: upper(s)]
+```
+Mostly useful for creating multiples of a cloud resource and want to reduce repetative resource code.
+
+Access the resources created with for_each by key or value to reference elsewhere
+
+Example:
+```tf
+resource "aws_s3_object" "upload_assets" {
+  for_each = fileset("${path.root}/public/assets", "*")
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "assets/${each.value}"
+  source = "${path.root}/public/assets/${each.value}"
+  etag = filemd5("${path.root}/public/assets/${each.value}")  
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes = [etag]
+  }  
+}
+```
+
