@@ -207,3 +207,27 @@ policy = jsonencode({
 })
 }
 ```
+
+## Terraform Resource Lifecycle Management
+[LifeCycle Management Meta Arguments](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+
+## Adding TF Resource for Out-of-Band Triggers (Like for Lifecycle)
+In this case we created a resource to control when we increment website version so we can control when new files are uploaded to CloudFront rather than every time an edit is made.
+
+The below example references a resource we created and only tracks an arbitrary variable for flagging when a version changhe happens, which will trigger a new file upload next time TF plan happens:
+
+```tf
+resource "terraform_data" "content_version" {
+  input = var.content_version
+}
+```
+This lifecycle argument is added to the aws_s3_object resource so we can ignore changes to etag (md5 hash) but can trigger an upoad when we increment version
+
+```tf
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes = [etag]
+  }  
+```
+
