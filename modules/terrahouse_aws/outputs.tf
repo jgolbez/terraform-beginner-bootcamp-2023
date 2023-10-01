@@ -12,3 +12,7 @@ output "website_endpoint" {
 output "account_id" {
   value = data.aws_caller_identity.current.account_id
 }
+
+output "cloudfront_url" {
+  value = aws_cloudfront_distribution.s3_distribution.domain_name
+}

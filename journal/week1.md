@@ -230,4 +230,46 @@ This lifecycle argument is added to the aws_s3_object resource so we can ignore 
     ignore_changes = [etag]
   }  
 ```
+## Provisioners
+Provisoners allow you to execute operational comands as part of a resource for actions that are not based on infrastructure state, eg AWS CLI
+They are not recommended as config management is not the goal of Terraform.
 
+
+### Local-Exec
+[Local-Exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)
+Local-Exec runs the operational commands on the machine executing the terraform apply
+
+Example:
+
+```tf
+  provisioner "local-exec" {
+    command = <<-EOT
+      aws cloudfront create-invalidation \
+        --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
+        --paths "/*"
+    EOT   
+  }
+```
+
+### Remote-Exec
+[Remote-Exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
+Remote-Exec will allow targeting a different machine for the execution of commands. Provide credentials for login to execute the commands.
+
+Example:
+```tf
+resource "aws_instance" "web" {
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+```
