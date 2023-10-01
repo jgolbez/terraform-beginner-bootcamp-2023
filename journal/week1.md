@@ -153,3 +153,57 @@ resource "aws_s3_object" "index" {
   etag = filemd5(var.index_html_filepath)  
 }
 ```
+
+## Terraform Locals Resource
+[Locals](https://developer.hashicorp.com/terraform/language/values/locals)
+Assigns a local friendly value to some defined expression that can be reused in resource blocks as reference
+```tf
+locals {
+    s3_origin_id = "MyS3Origin"
+}
+```
+
+
+## Terraform Data Sources
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+A data source is accessed via a special kind of resource known as a data resource, declared using a data block:
+
+```tf
+data "aws_ami" "example" {
+  most_recent = true
+
+  owners = ["self"]
+  tags = {
+    Name   = "app-server"
+    Tested = "true"
+  }
+}
+```
+
+This allows us to grab data and reference it in Terraform as a resource, and then use that reference in other code blocks
+
+## Working with JSON in TF
+[JSON Encoding with HCL in TF](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+Use jsonencode to create JSON policy in HCL
+
+Example:
+```tf
+policy = jsonencode({
+    "Version" = "2012-10-17",
+    "Statement" = {
+            "Sid" = "AllowCloudFrontServicePrincipalReadOnly",
+            "Effect" = "Allow",
+            "Principal" = {
+                "Service" = "cloudfront.amazonaws.com"
+            },
+            "Action" = "s3:GetObject",
+            "Resource" = "arn:aws:s3:::${aws_s3_bucket.website_bucket.id}/*",
+            "Condition" = {
+            "StringEquals" = {
+                "AWS:SourceArn" = "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${aws_cloudfront_distribution.s3_distribution.id}"
+                }
+            }
+        },         
+})
+}
+```

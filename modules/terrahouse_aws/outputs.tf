@@ -9,3 +9,6 @@ output "website_url" {
 output "website_endpoint" {
     value = aws_s3_bucket_website_configuration.website_configuration.website_endpoint
 }
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
