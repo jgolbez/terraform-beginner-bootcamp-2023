@@ -192,10 +192,10 @@ class TerraTownsMockServer < Sinatra::Base
 
     home = Home.new
     home.town = $home[:town]
-    home.name = name
-    home.description = description
+    $home[:name] = name
+    $home[:description] = description
     home.domain_name = $home[:domain_name]
-    home.content_version = content_version
+    $home[:content_version] = content_version
     unless home.valid?
       error 422, home.errors.messages.to_json
     end
