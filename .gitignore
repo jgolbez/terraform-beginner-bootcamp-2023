@@ -35,3 +35,9 @@ terraform.rc
 
 # Ignore tfstate
 .terraform.lock.hcl*
+
+#Ignore executable
+terraform-provider-terratowns/terraform-provider-terratowns_v*
+
+
+
