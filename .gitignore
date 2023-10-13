@@ -37,4 +37,5 @@ terraform.rc
 .terraform.lock.hcl*
 
 #Ignore executable
-**/terraform/provider/terratowns/terraform-provider-terratowns_v1.0.0
+**/terraform-provider-terratowns/terraform-provider-terratowns_v1.0.0**
+
