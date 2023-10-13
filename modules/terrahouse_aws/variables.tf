@@ -1,5 +1,16 @@
+variable "teacher_seat_uuid" {
+  description = "User UUID for Terratowns server"
+  type        = string
+  default     = "123e4567-e89b-12d3-a456-426655440000"
+
+  validation {
+    condition     = can(regex("^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", var.teacher_seat_uuid))
+    error_message = "User UUID must be in the format of a UUID (e.g., 123e4567-e89b-12d3-a456-426655440000)"
+  }
+}
+
 variable "user_uuid" {
-  description = "User UUID for the S3 bucket"
+  description = "User UUID for S3 Bucket"
   type        = string
   default     = "123e4567-e89b-12d3-a456-426655440000"
 
@@ -9,6 +20,15 @@ variable "user_uuid" {
   }
 }
 
+variable "terratowns_endpoint" {
+  type = string
+  default = "https://terratowns.cloud/api"
+}
+
+variable "terratowns_token" {
+  type = string
+  default = "563893jdjdduj9j94j9fu94u"
+}
 
 variable "s3_website_bucket_name" {
   description = "Name of the AWS S3 bucket for website"
