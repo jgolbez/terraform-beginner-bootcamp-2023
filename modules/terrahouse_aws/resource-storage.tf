@@ -16,7 +16,7 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 
 
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.s3_website_bucket_name
+  #bucket = var.s3_website_bucket_name
   tags = {
     UserUUID = var.user_uuid
   }
