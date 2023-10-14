@@ -14,21 +14,28 @@ variable "terratowns_token" {
   type = string
 }
 
-variable "s3_website_bucket_name" {
-  type = string
-}
-
-variable "index_html_filepath" {
-  type = string
-}
-variable "error_html_filepath" {
-  type = string
-}
+#variable "s3_website_bucket_name" {
+#  type = string
+#}
 
 variable "content_version" {
   type = number
 }
 
-variable "assets_path" {
+variable "public_path" {
   type = string
+}
+
+variable "planescape" {
+  type = object({
+    public_path     = string
+    content_version = number
+  })
+}
+
+variable "starocean2" {
+  type = object({
+    public_path     = string
+    content_version = number
+  })
 }

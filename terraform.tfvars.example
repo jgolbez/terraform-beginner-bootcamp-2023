@@ -1,7 +1,13 @@
 terratowns_endpoint = "https://terratowns.cloud/api"
 user_uuid = "123e4567-e89b-12d3-a456-426655440000"
-s3_website_bucket_name = "s3websitebucket-tmcc93020231038am"
-index_html_filepath = "/workspace/terraform-beginner-bootcamp-2023/public/index.html"
-error_html_filepath = "/workspace/terraform-beginner-bootcamp-2023/public/error.html"
-assets_path = "/workspace/terraform-beginner-bootcamp-2023/public/assets"
+#s3_website_bucket_name = "s3websitebucket-tmcc93020231038am"
+public_path = "/workspace/terraform-beginner-bootcamp-2023/public/"
 content_version = 1
+planescape = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/planescape"
+  content_version = 1
+}
+starocean2 = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/starocean2"
+  content_version = 1 
+}
